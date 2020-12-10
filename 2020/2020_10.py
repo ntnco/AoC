@@ -29,8 +29,7 @@ print(p1)
 
 def powerset(r):
     res = []
-    poss = 2 ** len(r)
-    for n in range(poss):
+    for n in range(2 ** len(r)):
         cur_group = []
         for i in range(len(r)):
             if (n >> i) & 1:
