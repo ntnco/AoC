@@ -33,9 +33,8 @@ def powerset(r):
     for n in range(poss):
         cur_group = []
         for i in range(len(r)):
-            if n & 1:
+            if (n >> i) & 1:
                 cur_group.append(r[i])
-            n >>= 1
         res.append(cur_group)
     return res
 
