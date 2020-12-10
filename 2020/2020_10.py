@@ -28,7 +28,8 @@ def check_illegal(n, pre) -> bool:
     else:
         return check_illegal(n, pre[1:])
 
-print(find_illegal(25, inp))
+p1 = find_illegal(25, inp)
+print(p1)
 
 
 def find_range(preamble, lines, stop, goal):

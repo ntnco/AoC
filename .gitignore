@@ -1,3 +1,4 @@
 *~
 aoc_get.py
 *.txt 
+_pycache_/*
