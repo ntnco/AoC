@@ -1,6 +1,5 @@
 from aoc_get import get_input
-from itertools import chain, combinations
-import math
+from math import prod
 
 inp = get_input().splitlines()
 jolts = [0]
@@ -30,7 +29,7 @@ print(p1)
 
 def powerset(r):
     res = []
-    poss = int(math.pow(2, len(r)))
+    poss = int(2 ** len(r))
     for n in range(poss):
         cur_group = []
         for i in range(len(r)):
@@ -65,5 +64,5 @@ for cg in clean_groups:
             cur_valid += 1
     num_valids.append(cur_valid)
 
-p2 = math.prod(num_valids)
+p2 = prod(num_valids)
 print(p2)
