@@ -16,7 +16,7 @@ cur_gr = [0]
 for i in range(1, len(jolts)):
     cur = int(jolts[i])
     cur_gr.append(cur)
-    diff = cur- int(jolts[i - 1])
+    diff = cur - int(jolts[i - 1])
     if diff == 1:
         d1 += 1
     elif diff == 3:
@@ -29,7 +29,7 @@ print(p1)
 
 def powerset(r):
     res = []
-    poss = int(2 ** len(r))
+    poss = 2 ** len(r)
     for n in range(poss):
         cur_group = []
         for i in range(len(r)):
