@@ -1,4 +1,4 @@
 *~
-aoc_get.py
 *.txt 
 __pycache__/
+cookie.txt

@@ -28,6 +28,10 @@ for i in range(len(bests)):
         print(p1)
         is_found = True
 
+
+# p2
+# it was high time for me to learn the Chinese Remainder Theorem.
+
 def find_facts(x, y):
     a = x
     b = y
