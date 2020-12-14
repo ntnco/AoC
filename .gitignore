@@ -1,5 +1,5 @@
 *~
 *.txt 
-*.swp
+*.swp 
 __pycache__/
 cookie.txt
