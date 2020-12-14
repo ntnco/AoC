@@ -54,12 +54,12 @@ def apply_mem_mask(mask: str, mem_num: str) -> str:
     lbin = len(x_indices)
 
     for i in range(2 ** lbin):
-        b36 = pad_bin(i, lbin)
+        ibin = pad_bin(i, lbin)
         bin_index = 0
         cur_res = ''
         for j in range(len(res)):
             if res[j] == 'X':
-                cur_res += b36[bin_index]
+                cur_res += ibin[bin_index]
                 bin_index += 1
             else:
                 cur_res += res[j]
