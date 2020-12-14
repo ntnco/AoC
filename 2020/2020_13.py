@@ -1,5 +1,4 @@
 from aoc_get import get_input
-from time import sleep
 
 inp = get_input().splitlines()
 
