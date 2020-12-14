@@ -6,7 +6,6 @@ def pad_bin(n: int, num_digits) -> str:
     binum = "{0:b}".format(n)
     return binum.zfill(num_digits)
 
-
 def apply_mask(mask: str, num: str) -> str:
     res = ''
     for i in range(len(mask)):
@@ -15,7 +14,6 @@ def apply_mask(mask: str, num: str) -> str:
         else:
             res += num[i]
     return res
-
 
 cur_mask = ''
 mem = {}
@@ -29,15 +27,11 @@ for line in inp:
         masked = apply_mask(cur_mask, fbn)
         mem[mem_addr] = int(masked, 2)
     
-p1 = 0
-for val in mem.values():
-    p1 += val
-
+p1 = sum(mem.values())
 print(p1)
 
 #p2
 def apply_mem_mask(mask: str, mem_num: str) -> str:
-    res_list = []
     x_indices = []
     res = ''
     for i in range(len(mask)): 
@@ -51,8 +45,8 @@ def apply_mem_mask(mask: str, mem_num: str) -> str:
 
     # we have our res with Xs, now we should get all possibilities
     # the idea here is to map all binary numbers in [0..2**num_of_Xs] onto the Xs
+    res_list = []
     lbin = len(x_indices)
-
     for i in range(2 ** lbin):
         ibin = pad_bin(i, lbin)
         bin_index = 0
