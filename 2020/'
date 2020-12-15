@@ -1,0 +1,34 @@
+from aoc_get import get_input
+
+inp = get_input().split(',')
+
+turn = 0
+nums = {}
+last = 0
+
+for n in inp:
+    nums[int(n)] = turn
+    turn += 1
+    last = n
+
+last_was_new = True
+
+base = len(nums)
+
+def add_num(rank):
+    if last_was_new:
+        new_num = 0
+        last_was_new = False
+    else:
+        new_num = rank - nums[last]
+    last = new_num
+    return new_num
+
+def get_num(n, was_it_new):
+    for i in range(base, n):
+        n = add_num(i)
+    return n
+
+print(nums)
+
+print(get_num(base + 1), True)
