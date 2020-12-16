@@ -19,7 +19,7 @@ def add_num(rank, last):
         if len(nums[new_num]) == 1:
             nums[new_num].append(rank)
         else:
-            a, b = new[new_num]
+            a, b = nums[new_num]
             nums[new_num] = b, rank
     else:
         nums[new_num] = [rank]
