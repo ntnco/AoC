@@ -45,15 +45,10 @@ def simplify2(s):
         s = simplify2(beg + simplify2(top) + end)
         return s
 
-p1 = 0
-p2 = 0
+p1 = p2 = 0
 
 for line in inp:
-    num1 = simplify1(line)
-    p1 += num1
+    p1 += simplify1(line)
+    p2 += int(simplify2(line))
 
-    num2 = simplify2(line)
-    p2 += int(num2)
-
-print(p1)
-print(p2)
+print(p1, p2)
