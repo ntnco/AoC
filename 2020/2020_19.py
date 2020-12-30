@@ -64,7 +64,7 @@ class Node:
         self.rules = rule_dict[k]
 
         if len(self.rules) == 1 and len(self.rules[0]) == 1 and \
-                re.match(r'^[ab]$', self.rules[0][0]):
+                re.match(r'^[abcde]$', self.rules[0][0]):
             self.lists = None
             self.val = self.rules[0][0]
         else:
@@ -76,33 +76,38 @@ class Node:
             return [self.val]
         res = []
         for li in self.lists:
-            res.extend(cross_concat(li))
+            crossed = cross_concat(li)
+            res.extend(crossed)
         return res
 
+
 def cross_concat(nodeList) -> [str]:
-    ncs = [node.get_concats() for node in nodeList]
-    print('node_concats -> ' + str(ncs))
+    word_groups = [node.get_concats() for node in nodeList]
+    print('word_groups -> ' + str(word_groups))
 
     ws = []
     ws_prev = ['']
-    for nc in ncs:
-        for w in nc:
+    for word_group in word_groups:
+        print('wg' + str(word_group))
+        for word in word_group:
             for wp in ws_prev:
-                cur_w = wp + w
-                ws.append(cur_w)
-        ws_prev = ws
-        ws = []
-    print(ws_prev)
-        
+                new_word = wp + word
+                ws.append(new_word)
+            ws_prev = ws
+            ws = []
+
     return ws_prev
 
+
 root = Node(0) # builds the entire tree
+
+print(inp)
 
 n1 = Node(1)
 c1 = n1.get_concats()
 print(c1)
 
-#print('---\n')
-#
-#all_w = root.get_concats()
-#print(all_w)
+print('---\n')
+
+all_w = root.get_concats()
+print(all_w)
