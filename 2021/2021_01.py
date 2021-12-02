@@ -1,5 +1,6 @@
 from aoc_get import get_input
 
+
 nums = [int(x) for x in get_input().split()]
 
 # part 1
