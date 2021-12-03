@@ -83,4 +83,5 @@ def get_cookie():
         cookie = f.read()
     except:
         print('No cookies, no gifts. Santa won\'t put up with this.')
+        exit()
     return cookie
