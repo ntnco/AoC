@@ -3,8 +3,6 @@ from aoc_get import get_input
 
 lines = get_input().splitlines()
 
-
-
 # part 1
 sums = [0] * len(lines[0])
 for line in lines:
