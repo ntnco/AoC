@@ -51,7 +51,7 @@ def get_first_board(boards, picks):
     for n in picks:
         for board in boards:
             if board.add_num(n) and board.check_win():
-                    return board.final_score(n)
+                return board.final_score(n)
 print(get_first_board(boards, picks))
 
 
