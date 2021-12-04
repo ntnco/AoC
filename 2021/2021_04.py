@@ -50,8 +50,7 @@ for grid in grids:
 def get_first_board(boards, picks):
     for n in picks:
         for board in boards:
-            if board.add_num(n):
-                if board.check_win():
+            if board.add_num(n) and board.check_win():
                     return board.final_score(n)
 print(get_first_board(boards, picks))
 
@@ -67,11 +66,12 @@ def get_last_board(picks, boards):
     for n in picks:
         for i in range(len(boards)):
             board = boards[i]
-            if not board.dead and board.add_num(n):
-                if board.check_win():
-                    board.dead = True
-                    num_alive -= 1
-                    if num_alive == 0:
-                        return board.final_score(n)
+            if not board.dead and \
+                    board.add_num(n) and\
+                    board.check_win():
+                board.dead = True
+                num_alive -= 1
+                if num_alive == 0:
+                    return board.final_score(n)
 
 print(get_last_board(picks, boards))
