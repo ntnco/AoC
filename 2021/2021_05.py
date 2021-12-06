@@ -31,13 +31,11 @@ def run_commands(commands, no_diagonals=True):
             continue
 
         last = False
-        while True:
+        while not last:
+            last = i == end_x and j == end_y
             sky[i][j] += 1
             i += inc_x
             j += inc_y
-            if last:
-                break
-            last = i == end_x and j == end_y
 
     return count_overlaps(sky)
 
