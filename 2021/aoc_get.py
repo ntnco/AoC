@@ -1,5 +1,7 @@
+import sys
 from requests import get
 from datetime import date
+
 
 def get_input(day=None, year=None, raw_format=False):
     today = date.today()
@@ -33,9 +35,10 @@ def get_input(day=None, year=None, raw_format=False):
             print('I/O error my friend')
     if not inp:
         print("You can't even get an input? Do you hate Christmas?")
-        exit() # yes this is breaking single-exit principle, sorry
+        sys.exit() # yes this is breaking single-exit principle, sorry
 
     return inp
+
 
 def save_forever(inp: str, file_name: str):
     try:
@@ -45,8 +48,9 @@ def save_forever(inp: str, file_name: str):
         print("can't write file. Merry Christmas.")
     return
 
+
 def get_some_input(d: int, y: int, raw_format: bool) -> str:
-    cookies = {'session': get_cookie()[:-1]}
+    cookies = {'session': get_cookie()}
     base_url = 'https://adventofcode.com/'
     url = base_url + str(y) + '/day/' + str(int(d)) + '/input'
     
@@ -74,8 +78,10 @@ def get_some_input(d: int, y: int, raw_format: bool) -> str:
 def get_raw_input(d, y):
     return get_some_input(d, y, False)
 
+
 def get_reg_input(d, y):
     return get_some_input(d, y, True)
+
 
 def get_cookie():
     try:
@@ -83,5 +89,5 @@ def get_cookie():
         cookie = f.read()
     except:
         print('No cookies, no gifts. Santa won\'t put up with this.')
-        exit()
-    return cookie
+        sys.exit()
+    return cookie.split()[0] # remove trailing \n
