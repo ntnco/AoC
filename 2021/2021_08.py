@@ -1,6 +1,9 @@
 from aoc_get import get_input
 
 
+# find easy digits and put them in an array
+# in their positions. For unknown digits, leave
+# an empty string
 def find_1478(nums):
     digits = [''] * 10
     for num in nums:
@@ -16,6 +19,7 @@ def find_1478(nums):
     return digits
 
 
+# get the characters 2 strings have in common
 def common_chars(str_list):
     common = set()
     for s in str_list:
@@ -23,13 +27,14 @@ def common_chars(str_list):
     return ''.join(common)
 
 
+# output the character for 2 lines: left-top and left-bottom
 def find_left_top_bottom_lines(nums):
     for c in 'abcdefg':
         cnt = init_nums.count(c)
         if cnt == 6:
-            LT = c # left top
+            LT = c # left-top
         elif cnt == 4:
-            LB = c # left bottom
+            LB = c # left-bottom
     return LT, LB
 
 
@@ -56,8 +61,7 @@ for line in inp.splitlines():
         if len(set(num) & set(digits[5])) == len(digits[5]) \
                 and LB in num:
             digits[6] = num
-        elif len(set(num) & set(digits[3])) == len(digits[3]) \
-                and LT in num:
+        elif len(set(num) & set(digits[4])) == len(digits[4]):
             digits[9] = num
         else:
             digits[0] = num
