@@ -1,96 +1,42 @@
 from aoc_get import get_input
 
-inp = get_input()
 
-# inp = '''[({(<(())[]>[[{[]{<()<>>
-# [(()[<>])]({[<{<<[]>>(
-# {([(<{}[<>[]}>{[]{[(<()>
-# (((({<>}<{<{<>}{[]{[]{}
-# [[<[([]))<([[{}[[()]]]
-# [{[{({}]{}}([{[{{{}}([]
-# {<[[]]>}<{[{[{[]{()[[[]
-# [<(<(<(<{}))><([]([]()
-# <{([([[(<>()){}]>(<<{{
-# <{([{{}}[<[[[<>{}]]]>[]]'''
-
-
-openers = '([{<'
-
-points = dict()
-points[')'] = 3
-points[']'] = 57
-points['}'] = 1197
-points['>'] = 25137
-points['OK'] = 0
-
-complete = dict()
-complete[')'] = 1
-complete['('] = 1
-complete[']'] = 2
-complete['['] = 2
-complete['}'] = 3
-complete['{'] = 3
-complete['>'] = 4
-complete['<'] = 4
-
-def matches(c1, c2):
-    if c1 == ')':
-        return c2 == '('
-    elif c1 == ']':
-        return c2 == '['
-    elif c1 == '}':
-        return c2 == '{'
-    elif c1 == '>':
-        return c2 == '<'
-    else:
-        print('error:', c1)
-
-
-
-def check_line(line):
-    acc = []
-    for c in line:
-        if c in openers:
-            acc.append(c)
-        elif matches(c, acc[-1]):
-            acc.pop()
-        else:
-            return c
-    return 'OK'
+points_p1 = {')':3, ']':57, '}':1197, '>':25137}
+points_p2 = {'(':1, '[':2, '{':3, '<':4}
+matches = {'(':')', '[':']', '{':'}', '<':'>'}
 
 
 def reduce_line(line):
     acc = []
     for c in line:
-        if c in openers:
+        if c in '([{<':
             acc.append(c)
-        elif matches(c, acc[-1]):
+        elif c == matches[acc[-1]]:
             acc.pop()
+        else:
+            return c
     return acc
 
 
-def score_completion(line):
-    line = line[::-1]
+def score_completion(reduced_line):
     score = 0
-    for c in line:
+    for c in reduced_line[::-1]:
         score *= 5
-        score += complete[c]
+        score += points_p2[c]
     return score
 
 
+inp = get_input()
 inp = inp.split()
-pairs = ['()', '[]', '{}', '<>']
+
 p1 = 0
 scores = []
 for line in inp:
-    check = check_line(line)
-    p1 += points[check]
-
-    if check == 'OK':
-        reduced_line = reduce_line(line)
+    reduced_line = reduce_line(line)
+    if len(reduced_line) == 1:
+        p1 += points_p1[reduced_line]
+    else:
         scores.append(score_completion(reduced_line))
-
-print(scores)
 
 p2 = sorted(scores)[len(scores) // 2]
 print(p1, p2)
