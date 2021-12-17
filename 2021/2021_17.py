@@ -21,7 +21,7 @@ def simulate(px, py, vx, vy, apex):
 
 limit = 2 * abs(y1)
 p1 = p2 = 0
-for i in range(limit):
+for i in range(x2 + 1):
     for j in range(-limit, limit):
         is_good, apex = simulate(0, 0, i, j, 0)
         if is_good:
