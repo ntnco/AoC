@@ -54,7 +54,6 @@ int dutyCalls(char opp, char own)
 int main()
 {
   ifstream input("input_2.txt");
-  // ifstream input("abc");
   string cur_line;
   char opp,
        own;

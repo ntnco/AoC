@@ -8,7 +8,6 @@ using std::cout;
 using std::endl;
 using std::string;
 using std::ifstream;
-using std::max;
 using std::vector;
 using std::sort;
 
